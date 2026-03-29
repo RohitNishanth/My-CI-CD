@@ -1,0 +1,26 @@
+name: Python Kutti Pipeline
+
+# Eppo intha robot start aaganum? 
+# Namma code-a GitHub-ku 'push' pannum pothu start aaganum.
+on: [push] 
+
+jobs:
+  test-my-code:
+    # Entha computer-la ithu run aaganum? (Cloud-la oru Ubuntu computer)
+    runs-on: ubuntu-latest 
+
+    # Robot panna vendiya steps (Instructions)
+    steps:
+      - name: 1. Code-a GitHub-la irunthu edu
+        uses: actions/checkout@v3
+
+      - name: 2. Python-a install pannu
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: 3. Pytest-a install pannu
+        run: pip install pytest
+
+      - name: 4. Namma test-a run panni paaru!
+        run: pytest
